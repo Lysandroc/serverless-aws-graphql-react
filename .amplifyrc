@@ -1,0 +1,14 @@
+{
+    "providers": {
+        "awscloudformation": {
+            "AuthRoleName": "awsappsyncreact-20181224010758-authRole",
+            "UnauthRoleArn": "arn:aws:iam::868773869027:role/awsappsyncreact-20181224010758-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::868773869027:role/awsappsyncreact-20181224010758-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "awsappsyncreact-20181224010758-deployment",
+            "UnauthRoleName": "awsappsyncreact-20181224010758-unauthRole",
+            "StackName": "awsappsyncreact-20181224010758",
+            "StackId": "arn:aws:cloudformation:us-east-1:868773869027:stack/awsappsyncreact-20181224010758/804d1cc0-0731-11e9-854c-0eee31812ac2"
+        }
+    }
+}

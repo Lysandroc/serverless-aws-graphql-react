@@ -1,0 +1,13 @@
+{
+    "AppSyncApiName": "appsync",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authcognitocd98616f",
+            "Outputs.UserPoolId"
+        ]
+    },
+    "schemaGraphql": "s3://awsappsyncreact-20181224010758-deployment/amplify-appsync-files/schema.graphql.1545624824219",
+    "ResolverBucket": "awsappsyncreact-20181224010758-deployment",
+    "ResolverRootKey": "amplify-appsync-files",
+    "DeploymentTimestamp": "1545624824219"
+}

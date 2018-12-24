@@ -1,0 +1,20 @@
+{
+    "projectName": "awsappsyncreact",
+    "projectPath": "/Users/lysandroc/projetos/aws_appsync_react",
+    "defaultEditor": "code",
+    "frontendHandler": {
+        "javascript": "/Users/lysandroc/.nvm/versions/node/v8.9.0/lib/node_modules/@aws-amplify/cli/node_modules/amplify-frontend-javascript"
+    },
+    "javascript": {
+        "framework": "react",
+        "config": {
+            "SourceDir": "src",
+            "DistributionDir": "build",
+            "BuildCommand": "npm run-script build",
+            "StartCommand": "npm run-script start"
+        }
+    },
+    "providers": {
+        "awscloudformation": "/Users/lysandroc/.nvm/versions/node/v8.9.0/lib/node_modules/@aws-amplify/cli/node_modules/amplify-provider-awscloudformation"
+    }
+}

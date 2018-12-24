@@ -1,0 +1,116 @@
+type Survey {
+  id: ID!
+  FirstName: String!
+  LastName: String!
+  Participation: Int!
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelSurveyConnection {
+  items: [Survey]
+  nextToken: String
+}
+
+input ModelStringFilterInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+}
+
+input ModelIDFilterInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+}
+
+input ModelIntFilterInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  contains: Int
+  notContains: Int
+  between: [Int]
+}
+
+input ModelFloatFilterInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  contains: Float
+  notContains: Float
+  between: [Float]
+}
+
+input ModelBooleanFilterInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelSurveyFilterInput {
+  id: ModelIDFilterInput
+  FirstName: ModelStringFilterInput
+  LastName: ModelStringFilterInput
+  Participation: ModelIntFilterInput
+  and: [ModelSurveyFilterInput]
+  or: [ModelSurveyFilterInput]
+  not: ModelSurveyFilterInput
+}
+
+type Query {
+  getSurvey(id: ID!): Survey
+  listSurveys(filter: ModelSurveyFilterInput, limit: Int, nextToken: String): ModelSurveyConnection
+}
+
+input CreateSurveyInput {
+  id: ID
+  FirstName: String!
+  LastName: String!
+  Participation: Int!
+}
+
+input UpdateSurveyInput {
+  id: ID!
+  FirstName: String
+  LastName: String
+  Participation: Int
+}
+
+input DeleteSurveyInput {
+  id: ID
+}
+
+type Mutation {
+  createSurvey(input: CreateSurveyInput!): Survey
+  updateSurvey(input: UpdateSurveyInput!): Survey
+  deleteSurvey(input: DeleteSurveyInput!): Survey
+}
+
+type Subscription {
+  onCreateSurvey: Survey @aws_subscribe(mutations: ["createSurvey"])
+  onUpdateSurvey: Survey @aws_subscribe(mutations: ["updateSurvey"])
+  onDeleteSurvey: Survey @aws_subscribe(mutations: ["deleteSurvey"])
+}
