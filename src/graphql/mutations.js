@@ -1,6 +1,4 @@
 // eslint-disable
-// this is an auto generated file. This will be overwritten
-
 export const createSurvey = `mutation CreateSurvey($input: CreateSurveyInput!) {
   createSurvey(input: $input) {
     id
