@@ -11,9 +11,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.handleSubmitSurvey = this.handleSubmitSurvey.bind(this);
-    this.handleChangeFirstName = this.handleChangeFirstName.bind(this);
-    this.handleChangeLastName = this.handleChangeLastName.bind(this);
-    this.handleChangeParticipation = this.handleChangeParticipation.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.state = {
       selected: {
@@ -68,26 +66,17 @@ class App extends Component {
     this.listSurveys();
   }
 
-  handleChangeFirstName(event) {
-    const obj = this.state;
-    obj.selected.FirstName = event.target.value;
-    this.setState(obj);
-  }
-
-  handleChangeLastName(event) {
-    const obj = this.state;
-    obj.selected.LastName = event.target.value;
-    this.setState(obj);
-  }
-
-  handleChangeParticipation(event) {
-    const obj = this.state;
-    obj.selected.Participation = event.target.value;
-    this.setState(obj);
+  handleChange(key, value) {
+    this.setState({
+      ...this.state,
+      selected: {
+        ...this.state.selected,
+        [key]: value
+        }
+    });
   }
 
   async handleDelete(id) {
-    debugger;
     await API.graphql(graphqlOperation(deleteSurvey, { input: { id }}));
     this.setState({...this.state, selected: { id: '', FirstName: '', LastName: '', Participation: 0 }});
     this.listSurveys();
@@ -115,9 +104,9 @@ class App extends Component {
         <div className="container">
           <form onSubmit={this.handleSubmitSurvey}>
             <div className="input-group">
-              <input type="text" className="" value={this.state.selected.FirstName} placeholder="First Name" onChange={this.handleChangeFirstName}/>
-              <input type="text" className="" value={this.state.selected.LastName} placeholder="Last Name" onChange={this.handleChangeLastName}/>
-              <input type="text" className="" value={this.state.selected.Participation} placeholder="Participation" onChange={this.handleChangeParticipation}/>
+              <input type="text" className="" value={this.state.selected.FirstName} placeholder="First Name" onChange={ event => this.handleChange.apply(this, ['FirstName', event.target.value]) }/>
+              <input type="text" className="" value={this.state.selected.LastName} placeholder="Last Name" onChange={ event => this.handleChange.apply(this, ['LastName', event.target.value]) }/>
+              <input type="text" className="" value={this.state.selected.Participation} placeholder="Participation" onChange={ event => this.handleChange.apply(this, ['Participation', event.target.value]) }/>
               <div className="input-group-append">
                 <button className="btn btn-primary" type="submit">{this.state.selected.id === '' ? 'SEND' : 'Update Survey'}</button>
               </div>
